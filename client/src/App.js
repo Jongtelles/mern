@@ -1,18 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import API from "./utils/API";
+import Results from "./components/Results";
 
 class App extends Component {
+
+  state = {
+    search: "",
+    results: []
+  };
+
+  componentDidMount() {
+    this.searchUser();
+  }
+
+  searchUser = query => {
+    API.search(query)
+      .then(res => {
+        console.log(res.data);
+        this.setState({ results: res.data.results });
+      })
+      .catch(err => console.log(err));
+  };
+  handleInputChange = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      [name]: value
+    });
+  };
   render() {
+
     return (
+
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Results
+        results={this.state.results}   
+        />  
       </div>
     );
   }
