@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import API from "./utils/API";
 import Results from "./components/Results";
+import axios from "axios";
 
 class App extends Component {
 
@@ -22,6 +23,11 @@ class App extends Component {
       })
       .catch(err => console.log(err));
   };
+  onClickKeep(data){
+    axios.post("/api/user", data).then((res) => {
+    console.log(res);
+  })
+  }
   handleInputChange = event => {
     const name = event.target.name;
     const value = event.target.value;
@@ -35,8 +41,9 @@ class App extends Component {
 
       <div className="App">
         <Results
-        results={this.state.results}   
-        />  
+        results={this.state.results}
+        onClick={this.onClickKeep}
+        />
       </div>
     );
   }
