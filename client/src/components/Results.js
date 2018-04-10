@@ -1,11 +1,11 @@
 import React from "react";
 
 const Results = props => (
-    <div>
+    <div className ="row">
  
         {props.results.map(result => (
-            <div className="list-group-item" key={result.id}>
-                <img alt={result.name.last} className="img-responsive" src={result.picture.thumbnail} />
+            <div className="" >
+                <img alt={result.name.last} className="img-responsive" src={result.picture.large} />
            
             <h2> {result.name.first} {result.name.last} </h2>
             <p> {result.email} </p>
