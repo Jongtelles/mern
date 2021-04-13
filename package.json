@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/Jongtelles/mern#readme",
   "dependencies": {
-    "concurrently": "^5.0.0",
+    "concurrently": "^6.0.2",
     "express": "^4.17.1",
     "mongoose": "^5.7.5",
     "path": "^0.12.7"
